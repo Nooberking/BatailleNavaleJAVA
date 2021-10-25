@@ -1,6 +1,5 @@
 package jeu;
 
-import java.util.Arrays;
 
 public class Plateau {
 		/*Le plateau de jeu est représenté par un tableau de 10 * 10 cases.
@@ -22,51 +21,62 @@ public class Plateau {
 		//Méthode permettant de renvoyer le tableau sous format de "case"
 		return this.tableau; 
 	}
-	public Case getCase( int ligne,Colonne c) {
-		// permet de renvoyer une case du plateau à partir d'une colonne c et une ligne l
+	public Case getCase( Position position) {
+		// permet de renvoyer une case du plateau à partir d'une position
 		
-		int cInt = c.ordinal(); 
-		ligne -= 1 ; 
-		return this.tableau[ligne][cInt]; 
+		int ligne = position.getLigne();
+		int colonne = position.getColonne(); 
+		return this.tableau[ligne][colonne]; 
 		
 	}
 
 	public Case getCase (String position) {
 		//Permet de renvoyer une case du plateau en saisissant une postion sous le format String. Exemple : "C3"
-		int cInt = Colonne.valueOf(""+position.charAt(0)).ordinal(); 
-		int ligne = position.charAt(1)-'1'; 
-		return this.tableau[ligne][cInt]; 	
+		Position pos = Position.valueOf(position); 
+		int ligne = pos.getLigne();
+		int colonne = pos.getColonne(); 
+		return this.tableau[ligne][colonne]; 	
 	}
 	
-	public void setCase(int ligne, Colonne c, Case value) {
-		//permet de modifier une case du plateau d'après la ligne et la colonne renseignée
-		int cInt = c.ordinal(); 
-		ligne -= 1 ;
-		this.tableau[ligne][cInt] = value; 	
+	public void setCase(Position position, Case value) {
+		//permet de modifier une case du plateau d'après la position renseignée
+		int ligne = position.getLigne();
+		int colonne = position.getColonne(); 
+		this.tableau[ligne][colonne] = value; 	
 	}
 	
 	public void setCase(String position, Case value) {
-		//Permet de modifier une case du plateau d'apres la position renseignée
-		int cInt = Colonne.valueOf(""+position.charAt(0)).ordinal(); 
-		int ligne = position.charAt(1)-'1';
-		this.tableau[ligne][cInt] = value;
+		//Permet de modifier une case du plateau d'apres la string position renseignée
+		Position pos = Position.valueOf(position); 
+		int ligne = pos.getLigne();
+		int colonne = pos.getColonne(); 
+		this.tableau[ligne][colonne] = value;
 	}
+	public void ajoutBateau(Bateau bateau) {
+		Position[] positions = bateau.getPositionsCases();
+		Case[] etatCases = bateau.getEtatCasesOcupees(); 
+		for (int i = 0; i < bateau.getTaille(); i++) this.setCase(positions[i], etatCases[i]);	
+	}
+	
 	@Override
 	public String toString() {
 	// Permet d'afficher tout le plateau
-		String affichage = "   "; 
+		String affichage = ""; 
+		String tagColonnes ="   ";
+		int currentLigne = -1 ; 
 		
 		// pour afficher les colonnes
-		for (Colonne c : Colonne.values()) affichage += c.name() + " ";
-		
-		for (int i = 0; i<this.tableau.length ; i++) 
-		{
-			int tailleL = this.tableau[i].length; 
+		for (Position pos : Position.values()) {
+			int ligne = pos.getLigne(); 
+			if (ligne == 0) tagColonnes += pos.name().charAt(0) + " ";
+			if (currentLigne != ligne ) {
+				currentLigne = ligne ; 
+				affichage += (ligne==0 ?"" : "\n") + (ligne+1) +(ligne< 9 ? "  ": " ");
+			}
+			affichage += this.tableau[ligne][pos.getColonne()].getValeurCase() + " ";			
 			
-			affichage +="\n"+(i+1);//affichage des lignes 
-			if (i < 9) affichage +=" "; // pour les lignes 1 à 9, on ajoute un espace supplémentaire pour aligner avec la ligne 10
-			for (int j = 0; j<tailleL; j++) affichage +=" "+this.tableau[i][j].getValeurCase(); //affichage de la valeur des case
 		}
+		affichage = tagColonnes + "\n" + affichage; 
 		return affichage ;
 	}
 	

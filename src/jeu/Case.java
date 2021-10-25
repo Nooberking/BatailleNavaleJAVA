@@ -2,9 +2,9 @@ package jeu;
 
 public enum Case {
 	VIDE('-'),
+	INTACT('O'),
 	TOUCHE('X'),
 	COULE('C'),
-	MONBATEAU('B'),
 	MANQUE('M'); 
 	
 	private char valeurCase; 
