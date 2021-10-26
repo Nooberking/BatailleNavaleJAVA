@@ -20,7 +20,7 @@ public enum Position {
 		this.ligne = ligne; 
 	}
 	
-	public int[] conversionInt(){
+	public int[] conversionInt(){ // permet de convertir position -> [ligne, colonne]
 		return new int[] {this.ligne, this.colonne}; 
 	}
 	public int getLigne() {
@@ -29,7 +29,7 @@ public enum Position {
 	public int getColonne() {
 		return this.colonne; 
 	}
-	public boolean aligne(Position p) {
+	public boolean aligne(Position p) {// vérifie si deux position sont alignés
 		int[] coordonneesP = p.conversionInt(); 
 		return (ligne == coordonneesP[0] || colonne == coordonneesP [1]); 
 	}

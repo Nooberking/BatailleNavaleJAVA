@@ -29,14 +29,6 @@ public class Plateau {
 		return this.tableau[ligne][colonne]; 
 		
 	}
-
-	public Case getCase (String position) {
-		//Permet de renvoyer une case du plateau en saisissant une postion sous le format String. Exemple : "C3"
-		Position pos = Position.valueOf(position); 
-		int ligne = pos.getLigne();
-		int colonne = pos.getColonne(); 
-		return this.tableau[ligne][colonne]; 	
-	}
 	
 	public void setCase(Position position, Case value) {
 		//permet de modifier une case du plateau d'après la position renseignée
@@ -44,15 +36,8 @@ public class Plateau {
 		int colonne = position.getColonne(); 
 		this.tableau[ligne][colonne] = value; 	
 	}
-	
-	public void setCase(String position, Case value) {
-		//Permet de modifier une case du plateau d'apres la string position renseignée
-		Position pos = Position.valueOf(position); 
-		int ligne = pos.getLigne();
-		int colonne = pos.getColonne(); 
-		this.tableau[ligne][colonne] = value;
-	}
-	public void ajoutBateau(Bateau bateau) {
+
+	public void ajoutBateau(Bateau bateau) {// Permet d'ajouter un bateau à l'affichage d'un plateau
 		Position[] positions = bateau.getPositionsCases();
 		Case[] etatCases = bateau.getEtatCasesOcupees(); 
 		for (int i = 0; i < bateau.getTaille(); i++) this.setCase(positions[i], etatCases[i]);	

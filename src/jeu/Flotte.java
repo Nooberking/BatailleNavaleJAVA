@@ -1,11 +1,11 @@
 package jeu;
 
 public class Flotte {
-	private Bateau porteAvion ; 
-	private Bateau croiseur; 
-	private Bateau contreTorpilleur1; 
-	private Bateau contreTorpilleur2; 
-	private Bateau torpilleur; 
+	private Bateau porteAvion ; //bateau à 5 cases
+	private Bateau croiseur; //bateau à 4 cases
+	private Bateau contreTorpilleur1; //bateau à 3 cases
+	private Bateau contreTorpilleur2; //bateau à 3 cases
+	private Bateau torpilleur; //bateau à 2 cases
 	private boolean estDecimee = false; 
 	
 	public Flotte() {
@@ -16,9 +16,6 @@ public class Flotte {
 		return porteAvion;
 	}
 
-	public void setPorteAvion(Bateau porteAvion) {
-		this.porteAvion = porteAvion;
-	}
 	public void setPorteAvion (Position debut, Position fin) {
 		this.porteAvion = new Bateau(debut,fin) ; 
 	}
@@ -27,9 +24,6 @@ public class Flotte {
 		return croiseur;
 	}
 
-	public void setCroiseur(Bateau croiseur) {
-		this.croiseur = croiseur;
-	}
 	public void setCroiseur(Position debut, Position fin) {
 		this.croiseur = new Bateau (debut, fin);
 	}
@@ -38,10 +32,6 @@ public class Flotte {
 		return contreTorpilleur1;
 	}
 
-	public void setContreTorpilleur1(Bateau contreTorpilleur1) {
-		this.contreTorpilleur1 = contreTorpilleur1;
-	}
-	
 	public void setContreTorpilleur1(Position debut, Position fin) {
 		this.contreTorpilleur1 = new Bateau(debut, fin); 
 	}
@@ -50,10 +40,6 @@ public class Flotte {
 		return contreTorpilleur2;
 	}
 
-	public void setContreTorpilleur2(Bateau contreTorpilleur2) {
-		this.contreTorpilleur2 = contreTorpilleur2;
-	}
-	
 	public void setContreTorpilleur2(Position debut, Position fin) {
 		this.contreTorpilleur2 = new Bateau(debut,fin);
 	}
@@ -62,15 +48,11 @@ public class Flotte {
 		return torpilleur;
 	}
 
-	public void setTorpilleur(Bateau torpilleur) {
-		this.torpilleur = torpilleur;
-	}
-	
 	public void setTorpilleur(Position debut, Position fin) {
 		this.torpilleur = new Bateau(debut, fin);
 	}
 	
-	public EtatBateau touche (Position cible) {
+	public EtatBateau touche (Position cible) { // methode permettant de vérifier si une flotte est touchée par une attaque.
 		
 		EtatBateau etatFlotte = EtatBateau.PASTOUCHE; 
 		boolean poursuiteAttaque = true; 
@@ -100,15 +82,10 @@ public class Flotte {
 			if (etatFlotte != EtatBateau.PASTOUCHE) poursuiteAttaque = false; 
 		}
 		
-		/*
-		 * if(etatFlotte == EtatBateau.COULE) { etatFlotte = this.EstDecimee() ?
-		 * EtatBateau.COULE : EtatBateau.TOUCHE; }
-		 */
-		
 		return etatFlotte; 
 	}
 
-	public boolean EstDecimee() {
+	public boolean EstDecimee() {// Verifie si la flotte est entièrement détruite.
 		estDecimee = !(
 				porteAvion.getEtatBateau() != EtatBateau.COULE ||
 				croiseur.getEtatBateau() != EtatBateau.COULE ||

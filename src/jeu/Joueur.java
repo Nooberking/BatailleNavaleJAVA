@@ -2,8 +2,8 @@ package jeu;
 
 public class Joueur {
 	private String pseudo; 
-	private Plateau monPlateau ;
-	private Plateau plateauAdverse;
+	private Plateau monPlateau ;// Plateau où sera situe les bateaux du joueur
+	private Plateau plateauAdverse;// plateau où sera conservé son avancée 
 	private Flotte flotte; 
 	
 	public Joueur() {
