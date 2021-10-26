@@ -18,6 +18,10 @@
 
 <b>Récupérer la version actuelle du dépôt distant (dans le repository) : </b>`git pull`
 
+<b>(Alternative) Récupérer la version actuelle du dépôt distant (sans fusionner dans le repository) :  </b> `git fetch`
+
+`git pull` = `git fetch`+`git merge`
+
 <b>Indexer un fichier à ajouter/modifier (l'ajouter du working directory vers l'index/stage) : </b>`git add *nom du fichier*`
 
 <b>Indexer un fichier à supprimer : </b>`git rm *nom du fichier* `
@@ -25,6 +29,8 @@
 <b>Création d'une nouvelle version sur le dépôt local avec les fichiers indexés : </b>`git commit -m *message de version*`
 
 <b>Envoi de la version actuelle du dépôt local vers le dépôt distant : </b>`git push`
+
+
 
 ## <u>Travail sur les branches</u>
 
@@ -38,7 +44,9 @@
 
 <b>Pour fusionner une branche avec la branche principale : </b>`git merge *nom de la branche*`(:warning:: il faut se placer dans la branche principale auparavant)
 
-<b>Pour supprimer une branche : </b>`git branche -d *nom de la branche`
+<b>Pour supprimer une branche (dans le dépôt local) : </b>`git branch -d *nom de la branche*`
+
+<b> Pour supprimer une branche (dans le dépôt distant) : </b>`git push origin --delete *nom de la branche* ` 
 
 ## <u>Correction des fichiers indexés avant commit</u>
 
