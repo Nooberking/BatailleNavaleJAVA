@@ -2,11 +2,14 @@ package jeu;
 
 public class Joueur {
 	private String pseudo; 
-	private Plateau plateau ;
+	private Plateau monPlateau ;
+	private Plateau plateauAdverse;
 	private Flotte flotte; 
 	
 	public Joueur() {
 		super(); 
+		this.monPlateau = new Plateau(); 
+		this.plateauAdverse = new Plateau();
 	}
 
 	public String getPseudo() {
@@ -17,12 +20,12 @@ public class Joueur {
 		this.pseudo = pseudo;
 	}
 
-	public Plateau getPlateau() {
-		return plateau;
+	public Plateau getMonPlateau() {
+		return monPlateau;
 	}
 
-	public void setPlateau(Plateau plateau) {
-		this.plateau = plateau;
+	public void setMonPlateau(Plateau plateau) {
+		this.monPlateau = plateau;
 	}
 
 	public Flotte getFlotte() {
@@ -31,6 +34,14 @@ public class Joueur {
 
 	public void setFlotte(Flotte flotte) {
 		this.flotte = flotte;
+	}
+
+	public Plateau getPlateauAdverse() {
+		return plateauAdverse;
+	}
+
+	public void setPlateauAdverse(Plateau plateauAdverse) {
+		this.plateauAdverse = plateauAdverse;
 	}
 	
 	

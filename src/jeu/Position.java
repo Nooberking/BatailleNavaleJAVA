@@ -29,6 +29,16 @@ public enum Position {
 	public int getColonne() {
 		return this.colonne; 
 	}
+	public boolean aligne(Position p) {
+		int[] coordonneesP = p.conversionInt(); 
+		return (ligne == coordonneesP[0] || colonne == coordonneesP [1]); 
+	}
+	public int nbCases (Position p) {
+		int[] coordonneesP = p.conversionInt(); 
+		if (ligne == coordonneesP[0]) return Math.abs(colonne-coordonneesP[1])+1; 
+		else if (colonne == coordonneesP[1]) return Math.abs(ligne-coordonneesP[0])+1;
+		else return 0;
+	}
 	public static String colonneIndex (int i) {
 		switch (i) {
 		case 0 :

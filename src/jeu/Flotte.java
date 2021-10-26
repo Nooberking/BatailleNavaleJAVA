@@ -100,9 +100,10 @@ public class Flotte {
 			if (etatFlotte != EtatBateau.PASTOUCHE) poursuiteAttaque = false; 
 		}
 		
-		if(etatFlotte == EtatBateau.COULE) {
-			etatFlotte = this.EstDecimee() ? EtatBateau.COULE : EtatBateau.TOUCHE; 
-		}
+		/*
+		 * if(etatFlotte == EtatBateau.COULE) { etatFlotte = this.EstDecimee() ?
+		 * EtatBateau.COULE : EtatBateau.TOUCHE; }
+		 */
 		
 		return etatFlotte; 
 	}

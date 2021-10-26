@@ -20,13 +20,13 @@ public class Bateau {
 		
 		
 		if (ligneDepart == ligneFin) {
-			this.taille = Math.abs(colonneDepart-colonneFin ) + 1;
+			this.taille = Math.abs(colonneFin - colonneDepart) + 1;
 			this.positionsCases = new Position[this.taille];
 			this.etatCasesOcupees = new Case[this.taille]; 
 			this.positionsCases[0] = depart; 
 			this.etatCasesOcupees[0] = Case.INTACT; 
 			for (int i = 1; i<this.taille; i++) {
-				this.positionsCases[i] = Position.valueOf(Position.colonneIndex(i)+ligneDepart); 
+				this.positionsCases[i] = Position.valueOf(Position.colonneIndex(i)+(ligneDepart+1)); 
 				this.etatCasesOcupees[i] = Case.INTACT; 
 			} 
 		}
